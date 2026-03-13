@@ -25,3 +25,14 @@ dist/
 
 # Logs
 *.log
+
+# Project specific outputs
+output/
+*.png
+!assets/**/*.png
+!data/**/*.png
+!docs/**/*.png
+!brain/**/*.png
+
+# Excel temp files
+~$*.xlsx

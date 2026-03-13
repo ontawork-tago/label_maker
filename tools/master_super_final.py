@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 
-def generate_super_master_matrix(output_path="data/ID/id_mapping_master_super_final.xlsx"):
+def generate_super_master_matrix(output_path="data/ID/id_mapping_master_super_final_v2.xlsx"):
     # 가이드 PDF 4페이지 정밀 분석 기반 전수 필드 리스트
     field_data = []
     
@@ -10,7 +10,8 @@ def generate_super_master_matrix(output_path="data/ID/id_mapping_master_super_fi
     # a-1 ~ a-32 (실제 가이드 마커 리스트)
     a_items = [
         ("a-2", "Energy Logo", "에너지 로고", "[MARK]", "체크박스(유무)", ["ITEM_04_EK_EU_PD_Europe_Turkey"]),
-        ("a-15", "Russia Warning", "러시아 경고문", "[TEXT]", "값 기입", ["ITEM_12_RU_Russia_Ukraine", "ITEM_36_RU_Russia"]),
+        ("a-3", "Denominacion (AR)", "제품 명칭(아르헨티나)", "MONITOR", "값 기입", ["ITEM_23_WN_Argentina"]),
+        ("a-15", "Russia Warning", "러시아 경고문", "[TEXT]", "값 기입", ["ITEM_36_RU_Russia"]),
         ("a-29", "Service Center (KR)", "서비스센터(한국)", "1544-7777", "값 기입", ["ITEM_09_KR_Korea"]),
         ("a-30", "Customer Care (KR)", "고객상담(한국)", "www.lgservice.co.kr", "값 기입", ["ITEM_09_KR_Korea"]),
         ("a-31", "VCCI Box (JL)", "VCCI 로고 박스", "[MARK]", "체크박스(유무)", ["ITEM_08_JL_Japan"]),
@@ -21,7 +22,7 @@ def generate_super_master_matrix(output_path="data/ID/id_mapping_master_super_fi
 
     # b ~ p 시리즈
     field_data.extend([
-        {"Index": "b", "English": "Regulation Model Name", "Korean": "기기의명칭 (규격모델명)", "Example": "MONITOR SIGNAGE LED", "Type": "값 기입", "Targets": ["ITEM_09_KR_Korea", "ITEM_08_JL_Japan"]},
+        {"Index": "b", "English": "Regulation Model Name", "Korean": "기기의명칭 (규격모델명)", "Example": "MONITOR SIGNAGE LED", "Type": "값 기입", "Targets": ["ITEM_09_KR_Korea", "ITEM_08_JL_Japan", "ITEM_23_WN_Argentina"]},
         {"Index": "c", "English": "ModelSuffix", "Korean": "모델명칭", "Example": "LED-OS.SUFFIX", "Type": "값 기입"},
         {"Index": "d", "English": "Power", "Korean": "정격", "Example": "AC 100-240 V~ 50/60 Hz", "Type": "값 기입"},
         {"Index": "e", "English": "Serial No.", "Korean": "일련번호", "Example": "S..........S", "Type": "값 기입"},
@@ -38,7 +39,7 @@ def generate_super_master_matrix(output_path="data/ID/id_mapping_master_super_fi
         (2, "EU (RED PICTO)", "무선_EU (RED PICTO)", "[MARK]", "체크박스(유무)", ["ITEM_04_EK_EU_PD_Europe_Turkey"]),
         (3, "KR (RF Module KC No.)", "무선_KR (RF Module KC No.)", "MSIP-CRM-LGE...", "값 기입", ["ITEM_09_KR_Korea"]),
         (8, "US ([FCC_IC] US_CANDA)", "무선_US ([FCC_IC] 미국_캐나다)", "BEJLGSBWAC", "값 기입", ["ITEM_18_US_USA"]),
-        (9, "FP ([ANRT] Morocco)", "무선_FP ([ANRT] 모로코)", "[MARK]", "체크박스(유무)", ["ITEM_06_FP_Morocco"]),
+        (9, "FP ([ANRT] Morocco / AR Contiene)", "무선_FP(모로코) / 아르헨티나 인증", "C-XXXXX", "값 기입", ["ITEM_06_FP_Morocco", "ITEM_23_WN_Argentina"]),
         (12, "FB ([ICASA] SOUTH AFRICA)", "무선_FB ([ICASA] 남아프리카)", "TA-20xx/xxxx", "값 기입", ["ITEM_25_FB_WIRELESS_S.AFRICA_Botswana"]),
     ]
     
@@ -61,7 +62,7 @@ def generate_super_master_matrix(output_path="data/ID/id_mapping_master_super_fi
         "ITEM_01_NON_REGULATION", "ITEM_02_AU_Australia", "ITEM_03_CN_China",
         "ITEM_04_EK_EU_PD_Europe_Turkey", "ITEM_05_FL_Nigeria", "ITEM_06_FP_Morocco",
         "ITEM_07_NOM_Generic", "ITEM_08_JL_Japan", "ITEM_09_KR_Korea",
-        "ITEM_10_MI_Saudi_Arabia", "ITEM_11_MN_Jordan_Iraq", "ITEM_12_RU_Russia_Ukraine",
+        "ITEM_10_MI_Saudi_Arabia", "ITEM_11_MN_Jordan_Iraq",
         "ITEM_13_TI_Indonesia", "ITEM_14_TM_Thailand", "ITEM_15_TR_India",
         "ITEM_16_TT_Taiwan", "ITEM_17_TV_Vietnam", "ITEM_18_US_USA",
         "ITEM_19_WC_WF_WH_Colombia_Peru_Chile", "ITEM_20_WM_Mexico", "ITEM_21_WZ_Brazil",
@@ -72,7 +73,7 @@ def generate_super_master_matrix(output_path="data/ID/id_mapping_master_super_fi
         "ITEM_31_TI_WIRELESS_Indonesia", "ITEM_32_TS_WIRELESS_Malaysia",
         "ITEM_33_WF_WH_WIRELESS_Peru_Chile", "ITEM_34_FF_W.Africa_Ghana_Senegal",
         "ITEM_35_FL_Wireless_Nigeria", "ITEM_36_RU_Russia", "ITEM_37_DR_Ukraine",
-        "ITEM_38_DG_Uzbekistan", "ITEM_39_Generic"
+        "ITEM_37_DR_Ukraine", "ITEM_38_DG_Uzbekistan"
     ]
     
     data = []
@@ -98,7 +99,7 @@ def generate_super_master_matrix(output_path="data/ID/id_mapping_master_super_fi
     
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     df.to_excel(output_path, index=False)
-    print(f"Super Master Matrix (w-9 Split & ID added) Created: {output_path}")
+    print(f"Master Mapping Generated: {output_path}")
 
 if __name__ == "__main__":
     generate_super_master_matrix()

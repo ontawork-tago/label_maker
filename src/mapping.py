@@ -2,7 +2,7 @@ import pandas as pd
 import os
 
 class IDMappingMaster:
-    def __init__(self, file_path="data/ID/id_mapping_master_super_final.xlsx"):
+    def __init__(self, file_path="data/ID/id_mapping_master_super_final_v2.xlsx"):
         self.file_path = file_path
         self.variable_fields = ["c", "p"] # Suffix(c)와 원산지(p)는 향지별로 달라질 수 있는 가변 필드로 분류
         if os.path.exists(file_path):

@@ -1,4 +1,27 @@
+# --- LG Label Maker Project .gitignore ---
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.venv/
+venv/
+env/
+
+# Node (Vite 등 이전 흔적)
 node_modules/
-output_images/
-data/
+dist/
+
+# Project Specific
 .env
+.cursorignore
+.vscode/
+.idea/
+
+# PDF Files
+# (Cloud 내 PDF가 필요하다고 하셨으므로, data 폴더 등은 제외하지 않습니다.)
+# 만약 특정 용량이 큰 파일만 제외하고 싶다면 아래에 추가하세요.
+
+# Logs
+*.log

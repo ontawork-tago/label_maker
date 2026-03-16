@@ -123,11 +123,12 @@ class IDLabelEngine:
                 0: "a-3", # 제품명칭 (아르헨티나 등)
                 1: "b",   # 기기명칭
                 2: "c",   # 모델명칭
-                3: "d-1", # 정격
+                3: "d-1", # 정격 (또는 d-2)
                 4: "e",   # 일련번호
                 5: "f",   # 날짜
                 6: "p",   # 원산지
-                7: "w-9"  # 무선/인증
+                7: "w-9", # 무선/인증
+                8: "z-9"  # 추가 인증 구역 (Uzbekistan 등)
             }
             for i, m in enumerate(unknown_markers):
                 if i in layout_map:

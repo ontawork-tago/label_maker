@@ -46,15 +46,12 @@ def run_all_files_verification():
                 f_info = mapping_master.get_field_by_id(fid)
                 idx = f_info["Index"]
                 
-                # Suffix(c) 자동화
+                # Suffix(c) 자동화 (기본값)
                 if idx == "c":
                     val = get_auto_suffix(itm)
                 else:
-                    spec_col = f"{itm}_Val"
-                    if spec_col in f_info and pd.notna(f_info[spec_col]) and f_info[spec_col] != "":
-                        val = f_info[spec_col]
-                    else:
-                        val = f_info["Example"]
+                    # 신규 룩업 로직 사용: _Val > _Ex > Example
+                    val = mapping_master.get_value_for_item(fid, itm)
                 
                 active_data[idx] = val
             
